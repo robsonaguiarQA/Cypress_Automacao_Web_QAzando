@@ -1,0 +1,1 @@
+# Automa-o_Web_Cypress_QAzando.
