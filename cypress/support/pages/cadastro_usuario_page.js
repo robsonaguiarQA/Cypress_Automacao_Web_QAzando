@@ -1,4 +1,4 @@
-/// <reference types ="cypress" />
+/// <reference types="cypress" />
 
 const elements = {
 
@@ -11,50 +11,44 @@ fields: {
       password:'#password'},
 
 mensagem: {
-      errorDigitoIncorreto:'.errorLabel',      
+      errorDigito:'.errorLabel',      
       mensagemTituloCadastroRealizado:'#swal2-title',
       mensagemSubtituloSejaBemVindo:'#swal2-html-container'}
-    }
+}
 
 export default {
 clicarCadastrar(){
-        cy.get(elements.buttons.btnRegister)
+      cy.get(elements.buttons.btnRegister)
         .click()
-    },
+      },
     
 mensagemErro(mensagem){
-      cy.get(elements.mensagem.errorDigitoIncorreto)
+      cy.get(elements.mensagem.errorDigito)
         .should('be.visible')
         .should('have.text', mensagem)
-  },
-preencheNome(name) {
+},
+preencherNome(name) {
       cy.get(elements.fields.name)
         .type(name)
-  },
-preencheEmail(email) {
+},
+preencherEmail(email) {
       cy.get(elements.fields.email)
         .should('be.visible')
         .type(email)
-  },
+},
 
-senhaInvalida() {
+preencherSenhaInvalida() {
       cy.get(elements.fields.password)
         .should('be.visible')
         .clear()
         .click();
 },  
-senhaValida(senha){
+preencherSenhaValida(senha){
       cy.get(elements.fields.password)
         .type(String(senha))
         .click()
-  },
+},
 
-            // APAGAR DEPOIS  / SEM USO
-checarMensagem(mensagem){
-      cy.get(elements.mensagem.errorDigitoIncorreto)
-        .should('have.text', mensagem)
-  },
-  
 checarMensagemCadastroRealizado(name){
       cy.get(elements.mensagem.mensagemTituloCadastroRealizado)
         .should('have.text','Cadastro realizado!')

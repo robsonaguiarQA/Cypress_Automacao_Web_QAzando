@@ -6,7 +6,7 @@ import { faker } from "@faker-js/faker";
 
 const name = faker.name.fullName();
 const email = faker.internet.email();
-const senha = faker.number.int({ min: 100000, max: 200000 });
+const senha = faker.internet.password({ length: 6 });
 
 describe ("Cadastro de usuário", () => {
 
@@ -19,13 +19,13 @@ describe ("Cadastro de usuário", () => {
     cadastro_usuario_page.mensagemErro('O campo nome deve ser prenchido')
   });
 
-  it("Validar campo email vazio", () => {
+  it("Validar campo E-mail vazio", () => {
     cadastro_usuario_page.preencherNome(name)
     cadastro_usuario_page.clicarCadastrar()
     cadastro_usuario_page.mensagemErro('O campo e-mail deve ser prenchido corretamente')
   });
 
-  it("Validar campo email invalido", () => {
+  it("Validar campo E-mail invalido", () => {
     cadastro_usuario_page.preencherNome(name)
     cadastro_usuario_page.preencherEmail('email_invalido')
     cadastro_usuario_page.clicarCadastrar()

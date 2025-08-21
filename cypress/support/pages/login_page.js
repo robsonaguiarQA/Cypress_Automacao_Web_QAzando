@@ -1,4 +1,4 @@
-/// <reference types ="cypress" />
+/// <reference types="cypress" />
 
 const elements = {
 
@@ -20,38 +20,50 @@ export default {
 clicarLogin(){
       cy.get(elements.buttons.btnLogin)
         .click();
-    },
+},
 
-preencheEmailInvalido(name) {
+preencherEmailInvalido(name) {
       cy.get(elements.fields.name)
         .should('be.visible')
         .type(name)
-    },
+},
 
-preencheEmailValido(email) {
+preencherEmailValido(email) {
       cy.get(elements.fields.name)
         .should('be.visible')
         .type(email)
-    },
+},
 
-validaMensagemEmailInvalido(mensagem){
+validarMensagemEmailInvalido(mensagem){
       cy.get(elements.mensagem.mensagemCampoVazio)
         .should('be.visible')
         .should('have.text', mensagem);
-    },
+},
 
-validaMensagemSenhaInválida(mensagem){
+validarMensagemSenhaInválida(mensagem){
       cy.get(elements.mensagem.mensagemCampoVazio)
         .click()
         .should('be.visible')
         .should('contain.text', mensagem);
-    },
+},
 
-     senhaInvalida() {
-  cy.get(elements.fields.password)
-    .should('be.visible')
-    .type('12345')   
-    .click();
+preencherSenhaInvalida() {
+      cy.get(elements.fields.password)
+        .should('be.visible')
+        .type('12345')   
+        .click();
+},
+preencherSenhaValida(senha){
+      cy.get(elements.fields.password)
+        .type(String(senha))
+        .click()
+},
+
+senhaVazia() {
+      cy.get(elements.fields.password)
+        .should('be.visible')
+        .clear()
+        .click();
 },
 
 checarMensagemCadastroRealizadosucesso(email){
@@ -59,5 +71,5 @@ checarMensagemCadastroRealizadosucesso(email){
         .should('have.text','Login realizado')
       cy.get(elements.mensagem.mensagemSubtituloSejaBemVindo)
         .should('have.text', `Olá, ${email}`)
-    }
+},
 }
