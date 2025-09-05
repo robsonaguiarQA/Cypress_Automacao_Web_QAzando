@@ -1,5 +1,5 @@
 # Automacao_Web_Cypress_QAzando
-
+básico no dia a dia de um QA
 
 Este repositório contém um projeto de **automação de testes end-to-end com Cypress**, aplicando **boas práticas de programação**, incluindo o uso de **Page Objects**, uma organização de código limpa e escalável.
 
